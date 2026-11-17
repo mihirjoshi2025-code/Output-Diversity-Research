@@ -12,3 +12,10 @@ models/
 # OS / editor clutter
 .DS_Store
 .obsidian/workspace*.json
+
+# Secrets (API keys)
+.env
+.env.*
+
+# Python bytecode
+__pycache__/

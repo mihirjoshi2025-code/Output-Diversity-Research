@@ -1,13 +1,19 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = []
+# dependencies = ["jinja2"]
 # ///
 """
 Label prompts with a safety classifier (Qwen3Guard-Gen) running in llama-server.
 
 Input is a JSONL file with one {"key": ..., "prompt": ...} per line. Each output line records the key,
 the classifier's verdict (Safe / Controversial / Unsafe), its categories, the raw reply, and which model
-and llama.cpp build produced it. Re-running with the same --out skips keys that are already saved, so a
+and llama.cpp build produced it.
+
+Response mode: if a record also has "response", the guard judges ONLY that assistant reply (in the context of the
+prompt) and also reports Refusal: Yes/No. llama-server's chat endpoint treats a final assistant message as text to
+continue, which silently drops the response, so this mode renders the model's own chat template locally (fetched
+from /props) and sends the finished text to /completion. Prompt and response are cut to the same lengths as
+jev_classify.py (safety_common.py), so both classifiers see identical text. Re-running with the same --out skips keys that are already saved, so a
 stopped run can be resumed.
 
 Start the server first, e.g.
@@ -24,13 +30,17 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
+import jinja2
+
 sys.path.insert(0, str(Path(__file__).parent))
 from generate_stories import get, post  # noqa: E402
+from safety_common import truncate_pair  # noqa: E402
 
 GUARD = ("Qwen/Qwen3Guard-Gen-4B", "6ec42827da0c1ff11e7a49dc269d2e810d27e108")  # converted to Q8_0 GGUF
 MAX_CHARS = 12_000  # ~3K tokens; keeps every request inside one llama-server slot (8K tokens with -c 32768 -np 4)
 SAFETY = re.compile(r"Safety:\s*(Safe|Unsafe|Controversial)")
 CATEGORIES = re.compile(r"Categories:\s*(.+)")
+REFUSAL = re.compile(r"Refusal:\s*(Yes|No)")
 
 
 def parse(reply: str) -> tuple[str | None, list[str]]:
@@ -54,6 +64,7 @@ def main() -> None:
     if "qwen3guard" not in Path(server_model).name.lower():
         sys.exit(f"Server has {server_model!r} loaded, not Qwen3Guard. Restart llama-server with the guard GGUF.")
     server_build = props.get("build_info")
+    template = jinja2.Environment(extensions=["jinja2.ext.loopcontrols"]).from_string(props["chat_template"])
 
     done = set()
     if args.out.exists():
@@ -67,15 +78,27 @@ def main() -> None:
 
     def run(rec: dict) -> dict:
         prompt = rec["prompt"]
-        body = {"messages": [{"role": "user", "content": prompt[:MAX_CHARS]}],
-                "temperature": 0, "max_tokens": 64}
-        resp = post(f"{args.url}/v1/chat/completions", body, args.timeout)
-        choice = resp["choices"][0]
-        reply = choice["message"].get("content") or ""
+        if "response" in rec:  # judge the assistant reply
+            p, r, truncated = truncate_pair(prompt, rec["response"])
+            text = template.render(messages=[{"role": "user", "content": p}, {"role": "assistant", "content": r}],
+                                   add_generation_prompt=True)
+            resp = post(f"{args.url}/completion", {"prompt": text, "temperature": 0, "n_predict": 64},
+                        args.timeout)
+            reply, finish = resp.get("content") or "", ("length" if resp.get("stop_type") == "limit" else "stop")
+            mode = "response"
+        else:  # judge the user prompt
+            body = {"messages": [{"role": "user", "content": prompt[:MAX_CHARS]}],
+                    "temperature": 0, "max_tokens": 64}
+            resp = post(f"{args.url}/v1/chat/completions", body, args.timeout)
+            choice = resp["choices"][0]
+            reply, finish = choice["message"].get("content") or "", choice.get("finish_reason")
+            truncated, mode = len(prompt) > MAX_CHARS, "prompt"
         safety, categories = parse(reply)
+        refusal = REFUSAL.search(reply)
         return {
-            "key": rec["key"], "safety": safety, "categories": categories, "raw": reply,
-            "truncated": len(prompt) > MAX_CHARS, "finish_reason": choice.get("finish_reason"),
+            "key": rec["key"], "mode": mode, "safety": safety, "categories": categories,
+            "refusal": refusal.group(1) if refusal else None, "raw": reply,
+            "truncated": truncated, "finish_reason": finish,
             "repo": GUARD[0], "revision": GUARD[1], "server_model": server_model,
             "llama_cpp_build": server_build, "created": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         }
