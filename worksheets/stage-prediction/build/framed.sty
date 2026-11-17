@@ -1,0 +1,7 @@
+% Minimal stand-in for framed.sty (not in BasicTeX): pandoc's code blocks use snugshade.
+\ProvidesPackage{framed}[2026/10/29 tcolorbox stand-in for pandoc code blocks]
+\RequirePackage{tcolorbox}
+\definecolor{codebg}{HTML}{F6F8FA}
+\definecolor{codeframe}{HTML}{D0D7DE}
+\newtcolorbox{snugshade}{colback=codebg, colframe=codeframe,
+  boxrule=0.4pt, arc=2pt, left=5pt, right=5pt, top=3pt, bottom=3pt, before skip=6pt, after skip=8pt}

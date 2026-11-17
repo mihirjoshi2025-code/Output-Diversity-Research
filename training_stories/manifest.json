@@ -1,0 +1,62 @@
+{
+  "files": [
+    {
+      "file": "dolci-instruct-dpo.jsonl",
+      "source": "dolci-instruct-dpo.jsonl.zst",
+      "source_sha256": "cbf47fa6feb958df4b60444b7a7055a7c48a153a2f4631c79066f1aa8c61c2c3",
+      "sha256": "d0a6ab8018f3a6b660c493873a784e1ee6f37d05f67ae4774fe6ec2f9c55ef73",
+      "rows": 5011,
+      "unique_ids": 4941,
+      "extra_rows_with_repeated_id": 70
+    },
+    {
+      "file": "dolci-instruct-rl.jsonl",
+      "source": "dolci-instruct-rl.jsonl.zst",
+      "source_sha256": "224df1bd24e76546df7e87186c04babcb48aef306f1219812bef8758695d3abc",
+      "sha256": "6fe5a606ce266dc9b9802a95f27a5043f83aab70004900b4aa754975fe722865",
+      "rows": 1976,
+      "unique_ids": 1965,
+      "extra_rows_with_repeated_id": 11
+    },
+    {
+      "file": "dolci-instruct-sft.jsonl",
+      "source": "dolci-instruct-sft.jsonl.zst",
+      "source_sha256": "f8348e7ce7e0ed73aaf03bfb2cdc44e0677173380f301fec8a250e349cdce650",
+      "sha256": "3df948a1c2a534bad2ee14a5386a93bd6e5bd5e99666d5b1e0b6e9cdce45600e",
+      "rows": 57846,
+      "unique_ids": 55915,
+      "extra_rows_with_repeated_id": 1931
+    },
+    {
+      "file": "dolci-think-dpo-7b.jsonl",
+      "source": "dolci-think-dpo-7b.jsonl.zst",
+      "source_sha256": "1572ca9e0fc56687fde94f3982c438f502d386d1fa92a093c970f25d3b81d097",
+      "sha256": "17859aa225438026b1b6718b1bdaad0417b8329286ebea279f5cf9bd9bceb86a",
+      "rows": 1935,
+      "unique_ids": 1935,
+      "extra_rows_with_repeated_id": 0
+    },
+    {
+      "file": "dolci-think-rl-7b.jsonl",
+      "source": "dolci-think-rl-7b.jsonl.zst",
+      "source_sha256": "e556063b69ddd2216141846a56ea7672cf356e81e63fb097dc4b6dfb2e779460",
+      "sha256": "c1f2a63a59a1a1ee4a0b892b8f7891187ce3bff9b263aeaf632ab39970988082",
+      "rows": 1443,
+      "unique_ids": 1443,
+      "extra_rows_with_repeated_id": 0
+    },
+    {
+      "file": "dolci-think-sft-7b.jsonl",
+      "source": "dolci-think-sft-7b.jsonl.zst",
+      "source_sha256": "79f537eeaf6479602fa6e1a82c8f9429b9da34d1de0f8135bd5d71ae16e989b8",
+      "sha256": "d80eefe9f53b150404cbd33c57129d5ed8e46b4b5853ab2a6148c3e5e1369424",
+      "rows": 12759,
+      "unique_ids": 12759,
+      "extra_rows_with_repeated_id": 0
+    }
+  ],
+  "total_rows": 80970,
+  "unique_file_id_keys": 78958,
+  "released_ids_sha256": "6e428d5f1cc24366fd35a6e98601d35002175372dbb3f27733ed03218e9d4500",
+  "data_archive": "data.zip"
+}

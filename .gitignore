@@ -1,0 +1,14 @@
+# Story and training data
+data/
+
+# Model weights (keep these in ~/models, outside this folder)
+models/
+*.gguf
+*.safetensors
+
+# Note backups made before rewrites
+.notes-backup-*/
+
+# OS / editor clutter
+.DS_Store
+.obsidian/workspace*.json

@@ -1,0 +1,274 @@
+[
+  {
+    "file": "generated_stories/data/20260421_015814_anthropic-claude-haiku-4.5_write_a_story.jsonl",
+    "field": "content",
+    "strip_thinking": false,
+    "records": 5000,
+    "empty_records": 0,
+    "records_with_core": 4570,
+    "percent_with_core": 91.4,
+    "word_count": 1937461,
+    "core_ppm": 13438.722121374314,
+    "per_word": {
+      "elias": {
+        "occurrences": 18,
+        "records_with_word": 2,
+        "ppm": 9.290509589612384
+      },
+      "mara": {
+        "occurrences": 92,
+        "records_with_word": 16,
+        "ppm": 47.484826791352184
+      },
+      "elara": {
+        "occurrences": 5,
+        "records_with_word": 2,
+        "ppm": 2.5806971082256625
+      },
+      "keeper": {
+        "occurrences": 8109,
+        "records_with_word": 4426,
+        "ppm": 4185.374570120379
+      },
+      "baker": {
+        "occurrences": 0,
+        "records_with_word": 0,
+        "ppm": 0.0
+      },
+      "mayor": {
+        "occurrences": 0,
+        "records_with_word": 0,
+        "ppm": 0.0
+      },
+      "clockmaker": {
+        "occurrences": 0,
+        "records_with_word": 0,
+        "ppm": 0.0
+      },
+      "fisherman": {
+        "occurrences": 100,
+        "records_with_word": 89,
+        "ppm": 51.61394216451325
+      },
+      "librarian": {
+        "occurrences": 35,
+        "records_with_word": 27,
+        "ppm": 18.064879757579636
+      },
+      "conductor": {
+        "occurrences": 218,
+        "records_with_word": 113,
+        "ppm": 112.51839391863888
+      },
+      "lighthouse": {
+        "occurrences": 17460,
+        "records_with_word": 4442,
+        "ppm": 9011.794301924014
+      }
+    }
+  },
+  {
+    "file": "generated_stories/data/20260421_015814_google-gemini-3.1-flash-lite-preview_write_a_story.jsonl",
+    "field": "content",
+    "strip_thinking": false,
+    "records": 5000,
+    "empty_records": 0,
+    "records_with_core": 4948,
+    "percent_with_core": 98.96,
+    "word_count": 2188074,
+    "core_ppm": 16886.997423304696,
+    "per_word": {
+      "elias": {
+        "occurrences": 23527,
+        "records_with_word": 4335,
+        "ppm": 10752.378575861694
+      },
+      "mara": {
+        "occurrences": 1,
+        "records_with_word": 1,
+        "ppm": 0.4570229343248903
+      },
+      "elara": {
+        "occurrences": 335,
+        "records_with_word": 85,
+        "ppm": 153.10268299883825
+      },
+      "keeper": {
+        "occurrences": 3888,
+        "records_with_word": 2611,
+        "ppm": 1776.9051686551734
+      },
+      "baker": {
+        "occurrences": 78,
+        "records_with_word": 54,
+        "ppm": 35.64778887734144
+      },
+      "mayor": {
+        "occurrences": 8,
+        "records_with_word": 6,
+        "ppm": 3.656183474599122
+      },
+      "clockmaker": {
+        "occurrences": 565,
+        "records_with_word": 437,
+        "ppm": 258.21795789356304
+      },
+      "fisherman": {
+        "occurrences": 25,
+        "records_with_word": 25,
+        "ppm": 11.425573358122257
+      },
+      "librarian": {
+        "occurrences": 33,
+        "records_with_word": 32,
+        "ppm": 15.08175683272138
+      },
+      "conductor": {
+        "occurrences": 26,
+        "records_with_word": 22,
+        "ppm": 11.882596292447147
+      },
+      "lighthouse": {
+        "occurrences": 8464,
+        "records_with_word": 3178,
+        "ppm": 3868.2421161258712
+      }
+    }
+  },
+  {
+    "file": "generated_stories/data/20260421_015814_openai-gpt-5.4-mini_write_a_story.jsonl",
+    "field": "content",
+    "strip_thinking": false,
+    "records": 5000,
+    "empty_records": 0,
+    "records_with_core": 4479,
+    "percent_with_core": 89.58,
+    "word_count": 6181540,
+    "core_ppm": 14946.760839531897,
+    "per_word": {
+      "elias": {
+        "occurrences": 5557,
+        "records_with_word": 476,
+        "ppm": 898.9669240998198
+      },
+      "mara": {
+        "occurrences": 66254,
+        "records_with_word": 3283,
+        "ppm": 10718.041135380505
+      },
+      "elara": {
+        "occurrences": 681,
+        "records_with_word": 58,
+        "ppm": 110.16672220838173
+      },
+      "keeper": {
+        "occurrences": 5557,
+        "records_with_word": 1771,
+        "ppm": 898.9669240998198
+      },
+      "baker": {
+        "occurrences": 1846,
+        "records_with_word": 1154,
+        "ppm": 298.63108545766914
+      },
+      "mayor": {
+        "occurrences": 1926,
+        "records_with_word": 716,
+        "ppm": 311.5728443074056
+      },
+      "clockmaker": {
+        "occurrences": 762,
+        "records_with_word": 486,
+        "ppm": 123.27025304373991
+      },
+      "fisherman": {
+        "occurrences": 478,
+        "records_with_word": 387,
+        "ppm": 77.32700912717543
+      },
+      "librarian": {
+        "occurrences": 140,
+        "records_with_word": 76,
+        "ppm": 22.64807798703883
+      },
+      "conductor": {
+        "occurrences": 982,
+        "records_with_word": 252,
+        "ppm": 158.8600898805152
+      },
+      "lighthouse": {
+        "occurrences": 8211,
+        "records_with_word": 1257,
+        "ppm": 1328.3097739398272
+      }
+    }
+  },
+  {
+    "file": "generated_stories/data/20260520_183858_local-Olmo-3-7B-Think_write_a_story.jsonl",
+    "field": "content",
+    "strip_thinking": false,
+    "records": 5000,
+    "empty_records": 0,
+    "records_with_core": 3653,
+    "percent_with_core": 73.06,
+    "word_count": 2204516,
+    "core_ppm": 11034.6216584502,
+    "per_word": {
+      "elias": {
+        "occurrences": 1969,
+        "records_with_word": 481,
+        "ppm": 893.1665726173002
+      },
+      "mara": {
+        "occurrences": 187,
+        "records_with_word": 45,
+        "ppm": 84.82587561169889
+      },
+      "elara": {
+        "occurrences": 14606,
+        "records_with_word": 2482,
+        "ppm": 6625.490583874192
+      },
+      "keeper": {
+        "occurrences": 1573,
+        "records_with_word": 801,
+        "ppm": 713.5353066160554
+      },
+      "baker": {
+        "occurrences": 145,
+        "records_with_word": 117,
+        "ppm": 65.77407467217294
+      },
+      "mayor": {
+        "occurrences": 599,
+        "records_with_word": 253,
+        "ppm": 271.71497054228684
+      },
+      "clockmaker": {
+        "occurrences": 60,
+        "records_with_word": 35,
+        "ppm": 27.21685848503708
+      },
+      "fisherman": {
+        "occurrences": 196,
+        "records_with_word": 172,
+        "ppm": 88.90840438445446
+      },
+      "librarian": {
+        "occurrences": 671,
+        "records_with_word": 457,
+        "ppm": 304.3752007243313
+      },
+      "conductor": {
+        "occurrences": 2,
+        "records_with_word": 2,
+        "ppm": 0.9072286161679026
+      },
+      "lighthouse": {
+        "occurrences": 4318,
+        "records_with_word": 1356,
+        "ppm": 1958.7065823065018
+      }
+    }
+  }
+]

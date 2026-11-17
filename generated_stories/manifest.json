@@ -1,0 +1,65 @@
+{
+  "files": [
+    {
+      "file": "20260421_015814_anthropic-claude-haiku-4.5_write_a_story.jsonl",
+      "source": "proprietary_models/robust/generated stories/20260421_015814_anthropic-claude-haiku-4.5_write_a_story.jsonl",
+      "sha256": "daf04bbd1cc390ac3ab433008a83e36584bfb7c426e13f6f3ef9b4deb25723e9",
+      "rows": 5000,
+      "model_slug": "anthropic-claude-haiku-4.5",
+      "metadata_model": "anthropic/claude/haiku/4.5",
+      "recorded_prompts": {
+        "[not recorded in row]": 1000,
+        "Write me a story.": 1000,
+        "Please write a story.": 1000,
+        "Tell me a story.": 1000,
+        "Please tell a story.": 1000
+      }
+    },
+    {
+      "file": "20260421_015814_google-gemini-3.1-flash-lite-preview_write_a_story.jsonl",
+      "source": "proprietary_models/robust/generated stories/20260421_015814_google-gemini-3.1-flash-lite-preview_write_a_story.jsonl",
+      "sha256": "ebf655989e3e919c8082fab92e7fdc0fcbb8d82abfd8a25868bcb8ce78806c47",
+      "rows": 5000,
+      "model_slug": "google-gemini-3.1-flash-lite-preview",
+      "metadata_model": "google/gemini/3.1/flash/lite/preview",
+      "recorded_prompts": {
+        "[not recorded in row]": 1000,
+        "Write me a story.": 1000,
+        "Please write a story.": 1000,
+        "Tell me a story.": 1000,
+        "Please tell a story.": 1000
+      }
+    },
+    {
+      "file": "20260421_015814_openai-gpt-5.4-mini_write_a_story.jsonl",
+      "source": "proprietary_models/robust/generated stories/20260421_015814_openai-gpt-5.4-mini_write_a_story.jsonl",
+      "sha256": "4a3c5906bb720786c07baf641838329889610ccf29a65cfa024536a73810006d",
+      "rows": 5000,
+      "model_slug": "openai-gpt-5.4-mini",
+      "metadata_model": "openai/gpt/5.4/mini",
+      "recorded_prompts": {
+        "[not recorded in row]": 1000,
+        "Write me a story.": 1000,
+        "Please write a story.": 1000,
+        "Tell me a story.": 1000,
+        "Please tell a story.": 1000
+      }
+    },
+    {
+      "file": "20260520_183858_local-Olmo-3-7B-Think_write_a_story.jsonl",
+      "source": "proprietary_models/robust/generated stories/20260520_183858_local-Olmo-3-7B-Think_write_a_story.jsonl",
+      "sha256": "b7ff4bdb4b8fac34a4ef2dfe9a07176f2b54428013ed75bbde3f0eebc990a040",
+      "rows": 5000,
+      "model_slug": "local-Olmo-3-7B-Think",
+      "metadata_model": "local/Olmo/3/7B/Think",
+      "recorded_prompts": {
+        "[not recorded in row]": 5000
+      }
+    }
+  ],
+  "total_stories": 20000,
+  "metadata_rows": 20000,
+  "metadata_sha256": "04bdb45dbc1a19205a64f7339974a580b30be67751071d2552748d8f0412bde5",
+  "prompts_sha256": "17cf7ee053c9339248c85a0f89cdd71ac06d6a29e2fa84d45b573cc9adc51ab3",
+  "data_archive": "data.zip"
+}

@@ -1,0 +1,56 @@
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{microtype}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{exbg}{HTML}{EEF4FB}
+\definecolor{exframe}{HTML}{2F6DB5}
+\definecolor{conceptbg}{HTML}{F1F8F1}
+\definecolor{conceptframe}{HTML}{3A8A3A}
+\definecolor{pitbg}{HTML}{FDF1EE}
+\definecolor{pitframe}{HTML}{C0392B}
+\definecolor{chkbg}{HTML}{FFF8E6}
+\definecolor{chkframe}{HTML}{C98A00}
+\definecolor{repobg}{HTML}{F3F0FA}
+\definecolor{repoframe}{HTML}{6C4AB6}
+
+% Section styling
+\titleformat{\section}{\Large\bfseries\sffamily\color{accent}}{\thesection}{0.7em}{}[\vspace{-0.4em}{\color{accent}\rule{\textwidth}{0.6pt}}]
+\titleformat{\subsection}{\large\bfseries\sffamily\color{accent}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\sffamily}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.6em}{0.9em}
+
+% Boxes used by build/boxes.lua
+\newtcolorbox{exercise}[1]{colback=exbg, colframe=exframe, coltitle=white,
+  fonttitle=\bfseries\sffamily, title={#1}, arc=2pt, boxrule=0.6pt, before skip=10pt, after skip=10pt}
+\newtcolorbox{concept}[1]{colback=conceptbg, colframe=conceptframe, coltitle=white,
+  fonttitle=\bfseries\sffamily, title={#1}, arc=2pt, boxrule=0.6pt, before skip=10pt, after skip=10pt}
+\newtcolorbox{pitfall}[1]{colback=pitbg, colframe=pitframe, coltitle=white,
+  fonttitle=\bfseries\sffamily, title={#1}, arc=2pt, boxrule=0.6pt, before skip=10pt, after skip=10pt}
+\newtcolorbox{checkpoint}[1]{colback=chkbg, colframe=chkframe, coltitle=black,
+  fonttitle=\bfseries\sffamily, title={#1}, arc=2pt, boxrule=0.6pt, before skip=10pt, after skip=10pt}
+\newtcolorbox{repo}[1]{colback=repobg, colframe=repoframe, coltitle=white,
+  fonttitle=\bfseries\sffamily, title={#1}, arc=2pt, boxrule=0.6pt, before skip=10pt, after skip=10pt}
+\newtcolorbox{mentor}[1]{colback=white, colframe=accent, coltitle=white,
+  fonttitle=\bfseries\sffamily, title={#1}, arc=2pt, boxrule=0.6pt, before skip=10pt, after skip=10pt}
+
+% Smaller code font so ~90 columns fit
+\RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\small}
+
+% Header / footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{gray}Stage prediction worksheet}
+\fancyhead[R]{\small\sffamily\color{gray}OLMo 3 Core stories}
+\fancyfoot[C]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\setlist{itemsep=2pt, topsep=4pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\KL}{\operatorname{KL}}
