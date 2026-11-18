@@ -19,3 +19,6 @@ models/
 
 # Python bytecode
 __pycache__/
+
+# CPR autosaved transcripts (full chat history; can contain pasted secrets)
+CC-Session-Logs/*autosave*
