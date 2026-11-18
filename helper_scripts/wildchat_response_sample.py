@@ -12,8 +12,11 @@ and writes:
   data/wildchat/response_sample.jsonl   a seeded, balanced sample: --per-group pairs WildChat calls safe
                                         (whole conversation not toxic) and --per-group whose response is toxic
 
-WildChat flags each message (OpenAI moderation or Detoxify fired), and a conversation is toxic if any message is.
-`response_toxic` is the flag on the assistant reply itself.
+WildChat flags a message as toxic when OpenAI moderation flags it OR Detoxify toxicity > 0.1 (this rule reproduces
+the flag on 100% of shard 0's 236K messages, checked 2026-11-17); a conversation is toxic if any message is. The
+moderation output includes `illicit`, so it is OpenAI's omni-moderation model (2024+), not the 2023 endpoint.
+`response_toxic` is the flag on the assistant reply. Raw scores are kept as oai_<category> (OpenAI category
+scores, 0-1) and detox_<field> (Detoxify scores, 0-1).
 
     uv run helper_scripts/wildchat_response_sample.py --per-group 50
 """
@@ -30,6 +33,10 @@ from huggingface_hub import HfFileSystem
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "data" / "wildchat"
 WILDCHAT = ("yuntian-deng/WildChat-4.8M-Full", "462d2dc4d4189436bc0d54313b4fd925f1fe93eb")
+OAI_CATS = ["harassment", "harassment_threatening", "hate", "hate_threatening", "illicit", "illicit_violent",
+            "self_harm", "self_harm_instructions", "self_harm_intent", "sexual", "sexual_minors", "violence",
+            "violence_graphic"]
+DETOX = ["toxicity", "severe_toxicity", "obscene", "identity_attack", "insult", "threat", "sexual_explicit"]
 COLS = ["conversation_hash", "model", "timestamp", "language", "toxic", "conversation", "openai_moderation",
         "detoxify_moderation"]
 
@@ -55,7 +62,9 @@ def first_pair(row) -> dict | None:
     mods, detox = row["openai_moderation"], row["detoxify_moderation"]
     rmod = mods[1] if len(mods) > 1 else None
     rdet = detox[1] if len(detox) > 1 else None
-    return {
+    scores = (rmod or {}).get("category_scores") or {}
+    raw = {f"oai_{c}": scores.get(c) for c in OAI_CATS} | {f"detox_{f}": (rdet or {}).get(f) for f in DETOX}
+    return raw | {
         "key": f"wc:{row['conversation_hash']}",
         "conversation_hash": row["conversation_hash"],
         "gpt_model": row["model"],

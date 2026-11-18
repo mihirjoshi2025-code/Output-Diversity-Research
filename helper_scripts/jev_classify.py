@@ -139,7 +139,8 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True, help="JSONL output file (appended to)")
     parser.add_argument("--task", choices=["safety", "topic"], default="safety",
                         help="safety: judge the response; topic: classify the prompt")
-    parser.add_argument("--model", default="jev-latest", help="jev-latest, or a pinned version")
+    # Pinned: jev-latest moved from 1.13 to 1.14 during this project, and all labels so far are from 1.14.0.
+    parser.add_argument("--model", default="jev-1.14.0", help="Jev version (jev-latest follows new releases)")
     parser.add_argument("--workers", type=int, default=8, help="Concurrent requests (API allows ~80/s)")
     parser.add_argument("--limit", type=int, help="Only label the first N records")
     parser.add_argument("--timeout", type=float, default=60)
